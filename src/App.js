@@ -1,24 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import {Route,Switch} from 'react-router-dom'
+import Home from './components/Home'
+import VerifyOtp from './components/OTP/VerifyOtp'
+import PersonalInfo from './components/PersonalInfo/PersonalInfo'
+import "./App.scss"
+import AccountDetails from './components/AccountDetails/AccountDetails'
+import ChooseDose from './components/ChooseDose/ChooseDose'
+import ChooseVaccinationCentre from './components/ChooseVaccinationCentre/ChooseVaccinationCentre'
+import SlotBooked from './components/SlotBooked/SlotBooked'
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Switch>
+      <Route exact path="/" component={Home} />
+      <Route path="/verifyotp" component={VerifyOtp} />
+      <Route path="/personalinfo" component={PersonalInfo} />
+      <Route path="/accountdetails" component={AccountDetails} />
+      <Route path="/choosedose" component={ChooseDose} />
+      <Route path="/choosevaccinationcentre" component={ChooseVaccinationCentre} />
+      <Route path="/slotbooked" component={SlotBooked} />
+    </Switch>
   );
 }
 

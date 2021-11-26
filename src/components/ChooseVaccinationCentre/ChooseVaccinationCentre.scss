@@ -1,0 +1,55 @@
+@import "../../App.scss";
+
+.vaccinfodiv{
+    .venue{
+        font-weight: 600;
+        font-family: $primaryFont;
+        font-size: 1.2em;
+        margin:0 2%;
+    }
+    .address{
+        margin:5% 2%;
+    }
+
+    .edit{
+       text-align:right;
+    }
+    background-color: #f7f7f7;
+    border-radius: 30px;
+    padding:10% 3%;
+    margin: 10% 2%;
+    .timeheading{
+        color:$primaryColor;
+        font-weight: 600;
+    }
+    .row{
+        text-align: center;
+        margin:0 auto;
+
+        p{
+            background-color: #e2e2e2;
+            padding:2% 5%;
+            border-radius: 30px;
+            font-size: .9em;
+            margin:3% 2%;
+        }
+        p:hover{
+            cursor: pointer;
+            background-color: $primaryColor;
+            color:white;
+            transform: scale(1.1);
+            transition: .2s;
+        }
+        .activep{
+            cursor: pointer;
+            background-color: $primaryColor;
+            color:white;
+            transform: scale(1.1);
+            transition: .2s;
+        }
+    }
+  
+    .schedulebutton{
+        margin:8% 0;
+    }
+}
