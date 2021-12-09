@@ -12,6 +12,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import Alert from '@mui/material/Alert';
 import page1 from '../images/page1.jpg'
 import logo from '../images/logo.png'
+import Footer from '../components/Footer/Footer'
 
 function Home(props) {
     const {register,handleSubmit,formState:{errors}}=useForm()
@@ -33,36 +34,45 @@ function Home(props) {
             await props.history.push('/verifyotp',res.data)
         })
         .catch(err=>{
-            console.log(err);
+            //console.log(typeof(err.response));
             setLoading(false)
             setError("Something went wrong")
         })
     }
     return (
         <div className="homepage">
-            <img className="background" src={page1} />
 
 
 
             <div className="shadow-lg form-div-home">
-            <img src={logo} alt="ztv" style={{height:"10vh",width:"10vw"}} />
+            <img src={logo} alt="ztv" className="logozeetv" />
             <h1>ZEETV Vaccination Camp</h1>
             <p>
-                Book your slot for free covid vaccination.
+                <p className="bold">
+                Confirm your slot for free Covid Vaccination.
+                </p>
             <br />
                 An OTP will be sent to your mobile number for verification
             </p>
             <form onSubmit = {handleSubmit(onSubmit)}>
             {!errors.phone?<TextField
+             onInput = {(e) =>{
+        e.target.value = Math.max(0, parseInt(e.target.value) ).toString().slice(0,10)
+    }}
             className="mobilenumberinput" 
-            id="outlined-basic" label="Mobile Number"
+            type="number"
+            id="outlined-basic" label="Enter Mobile Number"
             variant="outlined" {...register('phone',{required:true,maxLength:10})}
             />:
             <TextField
             error
+             onInput = {(e) =>{
+        e.target.value = Math.max(0, parseInt(e.target.value) ).toString().slice(0,10)
+    }}
+            type="number"
             helperText="Enter a valid mobile number"
             className="mobilenumberinput" 
-            id="outlined-basic" label="Mobile Number"
+            id="outlined-basic" label="Enter Mobile Number"
             variant="outlined" {...register('phone',{required:true,maxLength:10})}
             />
             }
@@ -86,6 +96,7 @@ function Home(props) {
         }
             </form>
             </div>
+            <Footer />
             </div>
     )
 }

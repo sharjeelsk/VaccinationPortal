@@ -1,0 +1,46 @@
+@import "../App.scss";
+
+.landingpage{
+    text-align: center;
+    h1,p{
+        color: black;
+    }
+
+    img{
+        height: 80vh;
+        width: 100%;
+    }
+}
+.bookbutton{
+    padding:.6% 3%;
+    outline: none;
+    background-color: #ff8400;
+    font-family: $primaryFont;
+    font-weight: bolder;
+    border: none;
+    color: white;
+    border-radius: 30px;
+
+}
+.bookbutton:hover{
+    cursor: pointer;
+}
+.bookbutton:focus{
+    outline: none;
+}
+
+@media (max-width: 992px) {
+
+}
+@media (max-width: 768px) {
+
+
+}
+@media (max-width: 576px) {
+    .landingpage{
+        img{
+            height: 30vh;
+            width: 100%;
+        }
+    }
+}

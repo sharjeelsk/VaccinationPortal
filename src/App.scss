@@ -10,3 +10,34 @@ h1,h2,h3{
     font-weight: 800;
     font-family: $primaryFont;
 }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+.zeetvlogo{
+  height: 10vh;
+  width: 10vw;
+}
+
+
+@media (max-width: 992px) {
+
+}
+@media (max-width: 768px) {
+
+
+}
+@media (max-width: 576px) {
+  .zeetvlogo{
+    height: 10vh;
+    width: 50vw;
+  }
+  
+}

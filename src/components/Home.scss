@@ -7,11 +7,18 @@
     width: 100vw;
     
 }
+.bold{
+    font-weight: bolder;
+}
+.logozeetv{
+    height: 10vh;
+    width: 10vw;
+}
 
 .form-div-home{
     background-color: white;
     
-    margin:0% 35%;
+    margin:5% 35%;
     padding:2% 3%;
     text-align: center;
     border: 3px  solid #ff8400;
@@ -98,6 +105,10 @@
 
 
 @media (max-width: 992px) {
+    .logozeetv{
+        height: 10vh;
+        width: 20vw;
+    }
     .form-div{
         margin:15% 10%;
         padding:2% 5%;
@@ -152,7 +163,10 @@
 
 }
 @media (max-width: 768px) {
-
+    .logozeetv{
+        height: 10vh;
+        width: 20vw;
+    }
     .form-div{
         margin:15% 10%;
         padding:2% 5%;
@@ -206,6 +220,11 @@
     }
 }
 @media (max-width: 576px) {
+    .logozeetv{
+        height: 10vh;
+        width: 40vw;
+    }
+    
     .form-div{
         margin:15% 10%;
         padding:2% 5%;
@@ -238,6 +257,7 @@
         text-align: center;
         border: 2px  solid #ff8400;
         border-radius: 10px;
+      
         .checkbox{
             font-size: 1.5em;
         }

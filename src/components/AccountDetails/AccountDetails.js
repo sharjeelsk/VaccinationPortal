@@ -49,10 +49,9 @@ function AccountDetails(props) {
     return (
         <div>
            <div className="shadow-lg form-div">
-           <img src={logo} alt="ztv" style={{height:"10vh",width:"10vw"}} />
+           <img src={logo} alt="ztv" className="zeetvlogo" />
            <h1>ZEETV Vaccination Camp</h1>
            <p className="pheading">Account Details</p>
-           <p>Registered Mobile Number is 987654321</p>
            <Button variant="text" onClick={()=>props.history.push("/personalinfo")} >Add Person</Button>
         {
             data.length>0?(
@@ -66,7 +65,7 @@ function AccountDetails(props) {
                <p>{item.gender}</p>
                <p>{item.uid}</p>
                <hr />
-               <p>Book a slot for covid vaccine</p>
+               <p>Confirm a slot for covid vaccine</p>
                {!item.is_vaccinated?<Button
                onClick={()=>{
                 props.storeUserInfo(item)   

@@ -17,6 +17,7 @@ import axios from 'axios'
 import {connect} from 'react-redux'
 import { storeUser } from '../redux/vaccUser/vaccUserActions';
 import logo from '../../images/logo.png'
+import moment from 'moment'
 function PersonalInfo(props) {
   console.log(props);
     const [value, setValue] = React.useState(null);
@@ -25,18 +26,10 @@ function PersonalInfo(props) {
     const [loading,setLoading]=React.useState(false)
     const [error,setError]=React.useState([])
     const [gender, setGender] = React.useState('');
-    const [cityData,setCityData]=React.useState([])
-    const [userCity,setUserCity]=React.useState("")
-    // React.useEffect(()=>{
-    //   axios.get(`${process.env.REACT_APP_LINK}/static/json/cities.json`)
-    //   .then(res=>{
-    //     console.log(res);
-    //     setCityData(res.data)
-    //   })
-    //   .catch(err=>{
-    //     setError("Something went wrong")
-    //   })
-    // },[])
+    const [city,setCity]=React.useState("")
+    console.log(city)
+    const cityData = ["Mumbai","Delhi","Gurgaon","Pune","Nashik","Nagpur","Lucknow","Kanpur","Gorakhpur","Allahabad"]
+  
     const onSubmit = (data,e)=>{
         let dob = date.format(value, 'DD/MM/YYYY');  
         let gend;
@@ -60,7 +53,7 @@ function PersonalInfo(props) {
              gender:gend,
              address:data.address,
              pin:data.pincode,
-             city:data.city,
+             city,
              dob,
              email:data.email,
              //aadhar:data.aadhar
@@ -89,11 +82,11 @@ function PersonalInfo(props) {
     return (
         <div>
            <div className="shadow-lg form-div">
-           <img src={logo} alt="ztv" style={{height:"10vh",width:"10vw"}} />
+           <img src={logo} alt="ztv" className="zeetvlogo" />
            <h1>ZEETV Vaccination Camp</h1>
            <p className="pheading">Personal Information</p>
-           <p>Please fill in all the details fully 
-This would be verified before vaccination</p>
+           <p>Please fill in all the details fully. 
+This would be verified before vaccination.</p>
            <form onSubmit = {handleSubmit(onSubmit)}>
             {!errors.firstname?<TextField
             className="personalinfoinput" 
@@ -127,7 +120,7 @@ This would be verified before vaccination</p>
             />
             }
 
-<div style={{margin:"5% 0"}}>
+<div style={{margin:"3% 0 0 0"}}>
 
 <FormControl
 className="genderInput" >
@@ -144,78 +137,98 @@ className="genderInput" >
           <MenuItem value={3}>Others</MenuItem>
         </Select>
       </FormControl>
-        
+</div>
+        <div style={{margin:"0% 0 3% 0"}}>
       <LocalizationProvider dateAdapter={AdapterDateFns} >
       <DatePicker
-      
+       inputFormat="dd/MM/yyyy"
         label="Date of birth"
         value={value}
         onChange={(newValue) => {
           setValue(newValue);
         }}
-        renderInput={(params) => <TextField sx={{width:'100%'}} {...params} />}
+        renderInput={(params) => <TextField 
+          
+          sx={{width:'100%'}} {...params} />}
       />
     </LocalizationProvider>
-</div>
+    </div>
 
 {!errors.address?<TextField
  inputProps={{maxLength:96}}
             className="personalinfoinput" 
-            id="outlined-basic" label="Address"
+            id="outlined-basic" label="Enter Address"
             variant="outlined" {...register('address',{required:true})}
+           
             />:
             <TextField
             inputProps={{maxLength:96}}
             error
             helperText="Enter a valid Address"
             className="personalinfoinput" 
-            id="outlined-basic" label="Address"
+            id="outlined-basic" label="Enter Address"
             variant="outlined" {...register('address',{required:true})}
+            
             />
             }
 
-{!errors.city?<TextField
+{/* {!errors.cowinid?<TextField
  inputProps={{maxLength:96}}
             className="personalinfoinput" 
-            id="outlined-basic" label="City"
-            variant="outlined" {...register('city',{required:true})}
+            id="outlined-basic" label="Co-WIN Reference ID"
+            variant="outlined" {...register('cowinid',{required:true})}
+            onInput = {(e) =>{
+              e.target.value = Math.max(0, parseInt(e.target.value) ).toString().slice(0,14)
+          }}
             />:
             <TextField
             inputProps={{maxLength:96}}
             error
-            helperText="Enter a valid City"
+            helperText="Enter a valid cowinid"
             className="personalinfoinput" 
-            id="outlined-basic" label="City"
-            variant="outlined" {...register('city',{required:true})}
+            id="outlined-basic" label="Co-WIN Reference ID"
+            variant="outlined" {...register('cowinid',{required:true})}
+            onInput = {(e) =>{
+              e.target.value = Math.max(0, parseInt(e.target.value) ).toString().slice(0,14)
+          }}
             />
-            }
-{/* <FormControl
-fullWidth >
-        <InputLabel id="demo-simple-select-label">Select City</InputLabel>
+            } */}
+
+
+<div style={{margin:"4% 0 0 0"}}>
+
+<FormControl
+className="genderInput" >
+        <InputLabel id="demo-simple-select-label">Vaccination City</InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          value={userCity}
-          label="City"
-          onChange={(event)=>setUserCity(event.target.value)}
+          value={city}
+          label="Vaccination City"
+          onChange={(e)=>setCity(e.target.value)}
         >
-          <MenuItem value={1}>Male</MenuItem>
-          <MenuItem value={2}>Female</MenuItem>
-          <MenuItem value={3}>Others</MenuItem>
-          {
-            cityData.length>0?(
-              cityData.map(item=><MenuItem value={item.name}>{item.name}</MenuItem>)
-            ):null
+          {cityData.map(item=>(
+            <MenuItem value={item}>{item}</MenuItem>
+          ))
           }
+          
+          
         </Select>
-      </FormControl> */}
+      </FormControl>
+        
+   
+</div>
 
 
 {!errors.pincode?<TextField
             className="personalinfoinput" 
             inputProps={{maxLength:6}}
+            type="number"
             id="outlined-basic" label="Pincode"
             variant="outlined" {...register('pincode',{required:true})}
+            onInput = {(e) =>{
+              e.target.value = Math.max(0, parseInt(e.target.value) ).toString().slice(0,6)
+          }}
             />:
             <TextField
             error
@@ -223,7 +236,11 @@ fullWidth >
             className="personalinfoinput" 
             id="outlined-basic" label="Pincode"
             inputProps={{maxLength:6}}
+            type="number"
             variant="outlined" {...register('pincode',{required:true})}
+            onInput = {(e) =>{
+              e.target.value = Math.max(0, parseInt(e.target.value) ).toString().slice(0,6)
+          }}
             />
             }
 
@@ -245,17 +262,25 @@ fullWidth >
 
 {!errors.aadhar?<TextField
             className="personalinfoinput" 
-            inputProps={{maxLength:16}}
+            type="number"
+            inputProps={{maxLength:12}}
             id="outlined-basic" label="Aadhar Number"
             variant="outlined" {...register('aadhar',{required:true})}
+            onInput = {(e) =>{
+              e.target.value = Math.max(0, parseInt(e.target.value) ).toString().slice(0,12)
+          }}
             />:
             <TextField
             error
-            inputProps={{maxLength:16}}
+            type="number"
+            inputProps={{maxLength:12}}
             helperText="Enter a valid Aadhar Number"
             className="personalinfoinput" 
             id="outlined-basic" label="Aadhar Number"
             variant="outlined" {...register('aadhar',{required:true})}
+            onInput = {(e) =>{
+              e.target.value = Math.max(0, parseInt(e.target.value) ).toString().slice(0,12)
+          }}
             />
             }
 

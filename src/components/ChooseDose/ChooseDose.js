@@ -56,7 +56,7 @@ function ChooseDose(props) {
     return (
         <div>
            <div className="shadow-lg form-div">
-           <img src={logo} alt="ztv" style={{height:"10vh",width:"10vw"}} />
+           <img src={logo} alt="ztv" className="zeetvlogo" />
            <h1>ZEETV Vaccination Camp</h1>
            <p className="pheading">Choose Dose</p>
            <p>Registered Mobile Number is {props.user.mobile_no}</p>
@@ -86,7 +86,7 @@ function ChooseDose(props) {
       />
     </LocalizationProvider>
                   <p style={{margin:"5% 3%"}}>As per government guideline,
- 2nd dose would be administer after 84 days of first dose.</p>
+ 2nd dose would be administered after 84 days of first dose.</p>
             </div>
           ):null
       }

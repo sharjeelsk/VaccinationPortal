@@ -13,13 +13,13 @@ import logo from '../../images/logo.png'
 function SlotBooked(props) {
     console.log(props);
     let data = props.location.state;
-    
+
     return (
         <div>
            <div className="shadow-lg form-div">
-           <img src={logo} alt="ztv" style={{height:"10vh",width:"10vw"}} />
+           <img src={logo} alt="ztv" className="zeetvlogo" />
            <h1>ZEETV Vaccination Camp</h1>
-           <p className="slotbooked">Slot booked for {data.candidate.first_name}</p>
+           <p className="slotbooked">Slot Confirmed for {data.candidate.first_name}</p>
            <FactCheckOutlinedIcon sx={{fontSize:'5em',color:"#ff8400"}} />
            <div className="slotinfodiv">
                <p className="venue">{data.center.name}</p>
@@ -28,8 +28,8 @@ function SlotBooked(props) {
                <p className="date">{data.center.date}</p>
                <p className="activetime">{data.time_slot}</p>
            </div>
-
-           <Button onClick={()=>props.history.push("/accountdetails")} variant="text">Book another slot</Button>
+           
+           <Button onClick={()=>props.history.push("/accountdetails")} variant="text">Confirm another slot</Button>
             </div>  
         </div>
     )
