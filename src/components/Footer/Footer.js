@@ -15,6 +15,7 @@ function Footer() {
             <TwitterIcon sx={{margin:"0 1%"}}/>
             <YouTubeIcon sx={{margin:"0 1%"}}/>
             <InstagramIcon sx={{margin:"0 1%"}}/>
+            <p style={{textAlign:"center"}}>Designed and developed by TechGeeks</p>
         </div>
     )
 }
