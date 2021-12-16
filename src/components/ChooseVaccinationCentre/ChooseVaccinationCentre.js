@@ -58,7 +58,7 @@ function ChooseVaccinationCentre(props) {
         //today.setHours(0,0,0,0);
         let endDate = date.parse(`${item.date} 21:00:00`, 'DD-MM-YYYY HH:mm:ss');
         //endDate = date.addDays(endDate,-1)
-        console.log(today>=startDate && today<=endDate)
+        console.log("start end",today>=startDate && today<=endDate)
         //today>=startDate && today<=endDate
         if(today>=startDate){
             return true;
