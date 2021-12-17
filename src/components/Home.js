@@ -36,7 +36,7 @@ function Home(props) {
         .catch(err=>{
             //console.log(typeof(err.response));
             setLoading(false)
-            setError("check your internet, if connected unblock the site from your firewall or ISP")
+            setError("check your internet, if connected unblock the site from your firewall or call ISP")
         })
     }
     return (
