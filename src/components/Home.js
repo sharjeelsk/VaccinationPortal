@@ -62,7 +62,7 @@ function Home(props) {
             className="mobilenumberinput" 
             type="number"
             id="outlined-basic" label="Enter Mobile Number"
-            variant="outlined" {...register('phone',{required:true,maxLength:10})}
+            variant="outlined" {...register('phone',{required:true,maxLength:10,minLength:10})}
             />:
             <TextField
             error
@@ -73,7 +73,7 @@ function Home(props) {
             helperText="Enter a valid mobile number"
             className="mobilenumberinput" 
             id="outlined-basic" label="Enter Mobile Number"
-            variant="outlined" {...register('phone',{required:true,maxLength:10})}
+            variant="outlined" {...register('phone',{required:true,maxLength:10,minLength:10})}
             />
             }
             <FormGroup>
